@@ -16,7 +16,7 @@ export const ACTIONS = {
 const initialState = {
   section: "introduction",
   renderMode: "preview",
-  imageUrl:'',
+  imageURL:'',
   editing: false,
   options: {
     filters : []
@@ -28,10 +28,11 @@ function reducer(state, action) {
   switch (action.type) {
     // Show Sections
     case ACTIONS.ADD_NEW_IMAGE:
+      console.log(action.payload);
       return {
         ...state,
         editing: true,
-        payload: action.payload
+        imageURL: action.payload.value
       };
     // Select Render Mode
     case ACTIONS.SELECT_RENDER_MODE:

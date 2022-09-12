@@ -11,7 +11,10 @@ const UploadButton = ({ action }) => {
     //setFile(URL.createObjectURL(e.target.files[0]));
     dispatch({
       type:action,
-      payload:URL.createObjectURL(e.target.files[0])
+      payload:{
+        title:'imageURL',
+        value:URL.createObjectURL(e.target.files[0])
+      }
     })
     router.push('/editor')
   }

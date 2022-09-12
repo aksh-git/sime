@@ -19,6 +19,9 @@ function editor() {
     setMounted(true)
   }, [])
   
+  useEffect(() => {
+    console.log(imageURL)
+  },[imageURL])
   return (
     <>
       {!state.editing &&
