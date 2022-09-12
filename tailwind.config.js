@@ -50,6 +50,7 @@ module.exports = {
       colors: {
         brand: "#1668aa",
         "brand-alt": "#0D7DBA",
+        transp:'#ffffff1a',
         dark: {
           300: "#b5b9d6",
           400: "#53566b",
@@ -78,7 +79,7 @@ module.exports = {
       },
       fontFamily: {
         display: ["aktiv-grotesk-extended", "sans-serif"],
-        body: ["aktiv-grotesk", "sans-serif"],
+        body: ["Lato", "sans-serif"],
         code: ["source-code-pro", "monospace"],
       },
     },

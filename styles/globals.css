@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300&display=swap');
+
 /**************************/
 /*     General Styles     */
 /**************************/
@@ -19,7 +21,7 @@
 /**************************/
 @layer base {
   header {
-    @apply z-20 flex items-center justify-between w-full h-8 relative transition-all duration-150 ease-in-out fixed;
+    @apply z-20 flex items-center justify-between w-full h-8 transition-all duration-150 ease-in-out relative;
   }
 
   main {

@@ -10,25 +10,28 @@ export const StateContext = createContext(null);
 
 export const ACTIONS = {
   TOGGLE_STYLE_COLOR: "toggle-style-color",
-  ADD_REPO: "add-repo",
-  DELETE_REPO: "delete-repo",
-  ADD_SUPPORT: "add-support",
-  TOGGLE_COPY_MODAL: "toggle-copy-modal",
-  TOGGLE_SIDEBAR: "toggle-sidebar",
+  ADD_NEW_IMAGE : 'add-new-image'
 };
 
 const initialState = {
   section: "introduction",
   renderMode: "preview",
+  imageUrl:'',
+  editing: false,
+  options: {
+    filters : []
+  },
+  settings:[]
 }
 
 function reducer(state, action) {
   switch (action.type) {
     // Show Sections
-    case ACTIONS.SHOW_SECTION:
+    case ACTIONS.ADD_NEW_IMAGE:
       return {
         ...state,
-        section: action.payload,
+        editing: true,
+        payload: action.payload
       };
     // Select Render Mode
     case ACTIONS.SELECT_RENDER_MODE:

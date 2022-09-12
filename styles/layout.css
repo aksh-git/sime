@@ -1,3 +1,6 @@
+body{
+    font-family: 'Lato', sans-serif;
+}
 html.light .layout{
     max-height: 100vh;
     max-width: 100vw;
@@ -63,6 +66,15 @@ html.dark .topball, html.dark .bottomball{
 html.dark .main .wrap{
     background-color: rgba(0, 0, 0, 0.5);
     filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+}
+.component{
+    background-color: rgba(255, 255, 255, 0.2);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.1));
+}
+html.dark .component{
+    background-color: rgba(0, 0, 0, 0.2);
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+    overflow: hidden;
 }
 /* .header{
     position: relative;
