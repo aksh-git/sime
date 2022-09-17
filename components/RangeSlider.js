@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { StateContext } from "../pages/_app";
 
-function RangeSlider({action, min, max, label, name, def}) {
+function RangeSlider({action, min, max, label, name, def, unit}) {
 
   const { state, dispatch } = useContext(StateContext);
-  const [rvalue, setrvalue] = useState(0);
+  const [rvalue, setrvalue] = useState(def);
 
   function handleChange(e){
     let v = parseInt(e.target.value)
@@ -16,7 +16,14 @@ function RangeSlider({action, min, max, label, name, def}) {
       type:action,
       payload:{
         title:name,
-        value:rvalue
+        value:{
+          name:name,
+          action:action,
+          min:min,
+          max:max,
+          curr:rvalue,
+          unit:unit
+        }
       }
     })
   }

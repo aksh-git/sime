@@ -12,7 +12,7 @@ function ChooseImage() {
           <UploadButton action='add-new-image' />
         </div>
         <div className='flex w-full h-8 justify-center items-center bg-transp  dark:bg-dark-800 border-opacity-5 p-6 rounded-b-xl gap-1'>
-          <span> Paste image URL <code className='py-1 px-2 rounded-md bg-light-800 dark:bg-dark-400 text-light-300'>Ctrl + v</code></span>
+          <span className='text-black dark:text-light-400'> Paste image URL <code className='py-1 px-2 rounded-md bg-light-800 dark:bg-dark-400 text-light-300'>Ctrl + v</code></span>
         </div>
       </div>
     </div>

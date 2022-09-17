@@ -10,7 +10,9 @@ export const StateContext = createContext(null);
 
 export const ACTIONS = {
   TOGGLE_STYLE_COLOR: "toggle-style-color",
-  ADD_NEW_IMAGE : 'add-new-image'
+  ADD_NEW_IMAGE : 'add-new-image',
+  EDIT_CONTRAST : 'edit-contrast',
+  EDIT_FILTER : 'edit-filter',
 };
 
 const initialState = {
@@ -21,6 +23,7 @@ const initialState = {
   options: {
     filters : []
   },
+  filters:[],
   settings:[]
 }
 
@@ -40,6 +43,13 @@ function reducer(state, action) {
         ...state,
         renderMode: action.payload,
       };
+    case ACTIONS.EDIT_FILTER:
+      let name = action.payload.title
+      let newObj = action.payload.value
+      return{
+        ...state,
+        filters:[...state.filters.filter((obj) => obj.name !== newObj.name), {...newObj}]
+      }
     default:
       throw new Error();
   }
