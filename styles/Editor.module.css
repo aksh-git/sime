@@ -9,11 +9,15 @@
 }
 .ewrap .output{
     max-height: 100%;
-    min-width: 60%;
+    min-width: 65%;
+    max-width: 65%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 0 .8rem .8rem .8rem;
+}
+.sourceImage{
+    display: none;
 }
 .ewrap .output .wrapper{
     width: 100%;
@@ -22,10 +26,10 @@
     justify-content: center;
     align-items: center;
 }
-.ewrap.output .wrapper img{
-    height: 100%;
-    width: 100%;
-    box-shadow: 0 0 10px #000;
+.canvas{
+    height: 80%;
+    width: 80%;
+    object-fit: contain;
 }
 .ewrap .controls{
     max-height: 100%;

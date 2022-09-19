@@ -5,6 +5,29 @@ function RangeSlider({action, min, max, label, name, def, unit}) {
 
   const { state, dispatch } = useContext(StateContext);
   const [rvalue, setrvalue] = useState(def);
+  const [mounted, setMounted] = useState(false);
+
+  function search(nameKey, arr){
+    for (var i=0; i < arr.length; i++) {
+        if (arr[i].name === nameKey) {
+          return arr[i];
+        }
+    }
+  }
+
+  async function getdefault(){
+    if (!mounted) {
+      return 
+    }else{
+      if(!state.filters) {
+        setrvalue(def)
+      }else{
+        var val = state.filters
+        val = await search(name,state.filters);
+        setrvalue(val!==undefined?val.data.curr:def)
+      }
+    }
+  }
 
   function handleChange(e){
     let v = parseInt(e.target.value)
@@ -15,23 +38,28 @@ function RangeSlider({action, min, max, label, name, def, unit}) {
     dispatch({
       type:action,
       payload:{
-        title:name,
+        name:name,
         value:{
           name:name,
+          data:{
           action:action,
           min:min,
           max:max,
           curr:rvalue,
-          unit:unit
+          unit:unit}
         }
       }
     })
   }
 
   useEffect(()=>{
-    update()
+    if(mounted) update()
   },[rvalue])
 
+  useEffect(()=>{
+    setMounted(true)
+    getdefault(name)
+  },[mounted])
 
   return (
     <div className="w-full py-1 px-2">

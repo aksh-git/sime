@@ -13,6 +13,7 @@ export const ACTIONS = {
   ADD_NEW_IMAGE : 'add-new-image',
   EDIT_CONTRAST : 'edit-contrast',
   EDIT_FILTER : 'edit-filter',
+  RESET_FILTERS : 'reset-filter',
 };
 
 const initialState = {
@@ -20,18 +21,20 @@ const initialState = {
   renderMode: "preview",
   imageURL:'',
   editing: false,
-  options: {
-    filters : []
-  },
   filters:[],
-  settings:[]
+  settings:[],
 }
+
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
 
 function reducer(state, action) {
   switch (action.type) {
     // Show Sections
     case ACTIONS.ADD_NEW_IMAGE:
-      console.log(action.payload);
       return {
         ...state,
         editing: true,
@@ -44,7 +47,7 @@ function reducer(state, action) {
         renderMode: action.payload,
       };
     case ACTIONS.EDIT_FILTER:
-      let name = action.payload.title
+      let name = action.payload.name
       let newObj = action.payload.value
       return{
         ...state,
