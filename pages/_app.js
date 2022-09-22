@@ -59,7 +59,7 @@ function reducer(state, action) {
 }
 
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
 
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -74,4 +74,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default App

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from 'next/router';
 import { StateContext } from "../pages/_app";
 import styles from '../styles/Editor.module.css';
@@ -6,7 +6,7 @@ import EditGeneral from "../components/layouts/EditGeneral";
 import EditFilters from "../components/layouts/EditFilters";
 import EditOthers from "../components/layouts/EditOthers";
 
-function editor() {
+function Editor() {
   
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -79,7 +79,7 @@ function editor() {
   return (
     <>
       {!state.editing &&
-        <div align="center" className="text-white"><h1>Hello editor!!</h1><br/><h3>We've to get an image to work on it.</h3><br/><br/><button onClick={()=>router.push('/')} className='btn bg-brand'>Choose Image</button></div>
+        <div align="center" className="text-white"><h1>Hello editor!!</h1><br/><h3>We have to get an image to work on it.</h3><br/><br/><button onClick={()=>router.push('/')} className='btn bg-brand'>Choose Image</button></div>
       }
       <a style={{opactity:'0'}} id="saveLink"></a>
        {/* <!-- Hidden image that will be used for holding the source image --> */}
@@ -88,9 +88,7 @@ function editor() {
         <div className={styles.ewrap}>
           <div className={`bg-transp ${styles.output}`}>
             <div className={`${styles.wrapper}`}>
-              {/* <img id="editingImage" src={imageURL} /> */}
               <canvas className={styles.canvas} id="canvas" height="0"></canvas>
-              {/* <img id="editingImage" src='https://asia.olympus-imaging.com/content/000107507.jpg'/> */}
             </div>
           </div>
           <div className={styles.controls}>
@@ -113,10 +111,9 @@ function editor() {
           <button onClick={()=>saveImage()} className='btn bg-brand'>Save image</button>
          </div>
         </div>
-        
       </div>}
     </>
   )
 }
 
-export default editor
+export default Editor
