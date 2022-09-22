@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import { StateContext } from "../pages/_app";
 import styles from '../styles/Editor.module.css';
 import EditGeneral from "../components/layouts/EditGeneral";
@@ -6,7 +7,8 @@ import EditFilters from "../components/layouts/EditFilters";
 import EditOthers from "../components/layouts/EditOthers";
 
 function editor() {
-
+  
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [editorOptions, seteditorOptions] = useState('filters');
   const [imageURL, setImageURL] = useState('');
@@ -36,13 +38,6 @@ function editor() {
   useEffect(() => {
     preCheck()
     setMounted(true)
-    var image = document.getElementById('sourceImage');
-    var canvas = document.getElementById('canvas');
-    canvas.crossOrigin = "anonymous";
-    canvas.height=image.height
-    canvas.width=image.width
-    var context = canvas.getContext('2d');
-    context.drawImage(image, 0, 0);
   }, [])
 
   useEffect(()=>{
@@ -67,18 +62,29 @@ function editor() {
     context.drawImage(image, 0, 0);
   }
 
+  function saveImage(){
+    let linkElement = document.getElementById('saveLink');
+    linkElement.setAttribute(
+      'download', 'sime_edited_image.png'
+    );
+    var canvas = document.getElementById('canvas');
+    let canvasData = canvas.toDataURL("image/png")
+    canvasData.replace(
+      "image/png", "image/octet-stream"
+    )
+    linkElement.setAttribute('href', canvasData);
+    linkElement.click();
+  }
 
   return (
     <>
-      {/* {!state.editing &&
-        <div align="center" className="text-white"><h1>Hello editor!!</h1><br/><h3>We've to get an image to work on it.</h3></div>
+      {!state.editing &&
+        <div align="center" className="text-white"><h1>Hello editor!!</h1><br/><h3>We've to get an image to work on it.</h3><br/><br/><button onClick={()=>router.push('/')} className='btn bg-brand'>Choose Image</button></div>
       }
-      {mounted && <div>
-        <img src={imageURL} />
-      </div>} */}
+      <a style={{opactity:'0'}} id="saveLink"></a>
        {/* <!-- Hidden image that will be used for holding the source image --> */}
       <img src={imageURL} className={styles.sourceImage} id="sourceImage" crossOrigin="anonymous"></img>
-      <div className={styles.editor}>
+      {state.editing && <div className={styles.editor}>
         <div className={styles.ewrap}>
           <div className={`bg-transp ${styles.output}`}>
             <div className={`${styles.wrapper}`}>
@@ -101,17 +107,14 @@ function editor() {
                 {editorOptions==='general' && <EditGeneral />} 
                 {editorOptions==='others' && <EditOthers />} 
               </div>
-              {/* <div className={`scrollbar ${styles.tabs}`}>
-                <OptionsButton title='General' />
-                <OptionsButton title='Filters' />
-                <OptionsButton title='Filters' />
-                <OptionsButton title='Filters' />
-              </div> */}
-             
             </div>
           </div>
+         <div className={`${styles.savbtn}`}>
+          <button onClick={()=>saveImage()} className='btn bg-brand'>Save image</button>
+         </div>
         </div>
-      </div>
+        
+      </div>}
     </>
   )
 }
