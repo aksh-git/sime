@@ -11,8 +11,9 @@ function ChooseImage() {
           <Logo spin={true} size={1.3} opacity={0.7} />
           <UploadButton action='add-new-image' />
         </div>
-        <div className='flex w-full h-8 justify-center items-center bg-transp  dark:bg-dark-800 border-opacity-5 p-6 rounded-b-xl gap-1'>
-          <span className='text-black dark:text-light-400'> Paste image URL <code className='py-1 px-2 rounded-md bg-light-800 dark:bg-dark-400 text-light-300'>Ctrl + v</code></span>
+        <div className='flex w-full h-8 justify-center items-center bg-transp dark:bg-dark-800 border-opacity-5 p-6 rounded-b-xl gap-2'>
+          <span className=' text-base text-dark-400 dark:text-light-400'>made with &#10084;&#65039; by</span>
+          <a target='_blank' className='cursor-pointer' href='https://akash-web.netlify.app'><img src='https://raw.githubusercontent.com/aksh-git/assets/main/logo-dark.svg' width='70' height='28'/></a>
         </div>
       </div>
     </div>

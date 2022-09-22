@@ -11,9 +11,9 @@ function Layout({children}) {
         <div className='bottomball'></div>
       </div>
       <Head>
-      <title>Simple image editor | SIME</title>
-      <meta name="description" content="Simple and easy to use image editor." />
-      <link rel="icon" href="/favicon.ico" />
+        <title>Simple image editor | SIME</title>
+        <meta name="description" content="Simple and easy to use image editor." />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <div className='main'>

@@ -20,7 +20,7 @@ function editor() {
       setImageURL(state.imageURL)
     }
   }
-  
+
   function createFilterString(){
     let options = state.filters
     let filterString = ''
