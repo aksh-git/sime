@@ -25,6 +25,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: inherit;
 }
 .canvas{
     max-height: 80%;

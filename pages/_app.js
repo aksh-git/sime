@@ -17,8 +17,6 @@ export const ACTIONS = {
 };
 
 const initialState = {
-  section: "introduction",
-  renderMode: "preview",
   imageURL:'',
   editing: false,
   filters:[],
